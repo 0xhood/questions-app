@@ -1,8 +1,11 @@
-'use client';
-import React from 'react'
+"use client";
+import QuestionsList from "@/components/questions-list/questions-list";
+import React from "react";
 
 export default function page() {
   return (
-    <div>liked</div>
-  )
+    <div>
+      <QuestionsList />
+    </div>
+  );
 }
