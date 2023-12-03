@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - ./client:./
     depends_on:
       - server
 
@@ -16,6 +18,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    volumes:
+      - ./server:./
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
@@ -30,14 +34,11 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
     healthcheck:
       test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
       interval: 30s
       timeout: 10s
       retries: 3
-
-networks:
-  default:
-    external:
-      name: questions-app-net
 
