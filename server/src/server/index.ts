@@ -1,6 +1,4 @@
-import app from "../app/app";
-
-import prismaClientDb from "../databases/prisma/prismaClient.db";
+import app from "../app";
 
 const port = app.get("port");
 const env = app.get("env");
@@ -24,7 +22,7 @@ process.on("SIGINT", async () => {
 
 		// await mongoConnection.close(); // Close the MongoDB connection
 
-		await prismaClientDb.$disconnect(); // Disconnect from Prisma
+		// await prismaClientDb.$disconnect(); // Disconnect from Prisma
 		console.log("\n\nPrisma disconnected 💥.");
 
 		process.exit(0); // Exit the process with a success code
